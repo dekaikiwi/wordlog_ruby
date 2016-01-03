@@ -55,3 +55,5 @@ group :test do
   gem 'ffaker'
 end
 
+gem 'test-unit'
+gem "devise"
