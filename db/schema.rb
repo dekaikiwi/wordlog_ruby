@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109052716) do
+ActiveRecord::Schema.define(version: 20160109070452) do
+
+  create_table "lists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "word_id"
+  end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id"
+  add_index "lists", ["word_id"], name: "index_lists_on_word_id"
+
+  create_table "lists_words", id: false, force: :cascade do |t|
+    t.integer "list_id"
+    t.integer "word_id"
+  end
+
+  add_index "lists_words", ["list_id", "word_id"], name: "index_lists_words_on_list_id_and_word_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -39,8 +57,10 @@ ActiveRecord::Schema.define(version: 20160109052716) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "list_id"
   end
 
+  add_index "words", ["list_id"], name: "index_words_on_list_id"
   add_index "words", ["user_id"], name: "index_words_on_user_id"
 
 end

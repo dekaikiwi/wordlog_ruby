@@ -9,4 +9,6 @@ describe Word do
   it { should respond_to(:user_id)}
 
   it { should belong_to :user }
+
+  it { should have_and_belong_to_many :lists }
 end
