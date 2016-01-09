@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :word do
-    word {FFake::Lorem.word}
-    translation {FFake::LoremCN.sentence}
-    user_id "1"
+    target_word {FFaker::Lorem.word}
+    translation {FFaker::LoremCN.sentence}
+
+    user
   end
 
 end

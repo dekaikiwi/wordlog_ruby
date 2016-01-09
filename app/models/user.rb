@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   before_create :generate_authentication_token!
 
+  has_many :words
 
   def generate_authentication_token!
     begin
