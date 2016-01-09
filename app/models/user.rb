@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   before_create :generate_authentication_token!
 
   has_many :words
+  has_many :lists
 
   def generate_authentication_token!
     begin
